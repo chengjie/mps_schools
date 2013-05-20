@@ -1,0 +1,92 @@
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="span3 text-left">
+                <h5><a href="help.php?act=list">帮助中心</a></h5>
+                <ul class="unstyled">
+                    {loop $helps $help}
+                    <li><small><a href="{$help[url]}" target="_blank">{$help[title]}</a></small></li>
+                    {/loop}
+                </ul>
+            </div>
+            <div class="span3 text-left">
+                <h5>联系方式</h5>
+                <ul class="unstyled">
+                    <li>
+                        <small>
+                            <i class="icon-comment"></i>热线电话：{$CFG['phone']}
+                        </small>
+                    </li>
+                    <li>
+                        <small>
+                            QQ：<!--{loop $CFG['qq'] $qq}-->
+                            <a href="http://wpa.qq.com/msgrd?V=1&amp;Uin={$qq}&amp;Site={$CFG[webname]}&amp;Menu=yes" target="_blank"><img style="display:inline" src="http://wpa.qq.com/pa?p=1:{$qq}:4" height="16" border="0" alt="QQ" />{$qq}</a>
+                            <!--{/loop}-->
+                        </small>
+                    </li>
+                    <li>
+                        <small>
+                            <i class="icon-user"></i>QQ群：{$CFG['qqun']}
+                        </small>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="span3 text-left">
+                <h5>便民服务</h5>
+                <ul class="unstyled">
+                    {loop $fac $fac}
+                    <li>{$fac['title']}: {$fac['phone']}</li>
+                    {/loop}
+                </ul>
+            </div>
+            <div class="span3 text-left">
+                <h5>友情连接</h5>
+                <ul class="unstyled">
+                    {if !empty($links[txt])}
+                    {loop $links[txt] $link}
+                    <li><a href="{$link['url']}" target=_blank title="{$link['webname']}">{$link['webname']}</a></li>
+                    {/loop}
+                    {/if}
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <hr>
+            <div class="span12">
+                <p class="text-center">
+                    <a onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('<?=$CFG[weburl]?>');return(false);" style="cursor:pointer;">设为首页</a> |
+                    <a href=javascript:window.external.AddFavorite('{$CFG[weburl]}','{$CFG[webname]}')>加为收藏</a> |  <a href="./wap">wap</a> |
+                    <!--{loop $about $key $val}-->
+                    <a href={$val[url]} target=_blank>{$val[title]}</a>
+                    {if $key<(count($about)-1)} | {/if}
+                    <!--{/loop}-->
+                </p>
+                <p>
+                    <a href="rss.php"><img src="templates/{$CFG[tplname]}/images/rss_xml.gif" border="0" /></a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!--
+	&lt;!&ndash; 页脚 &ndash;&gt;
+<div id="footer" class="clearfix">
+  <div class="foot_info">
+
+    Powered by <a href=http://www.phpmps.com target=_blank><strong>Phpmps</strong></a>&copy; 2008-2009 Phpmps Inc. 
+	&lt;!&ndash;{if !empty($CFG['qq'])}&ndash;&gt;
+	QQ:	
+	&lt;!&ndash;{loop $CFG['qq'] $qq}&ndash;&gt;
+		<a href="http://wpa.qq.com/msgrd?V=1&amp;Uin={$qq}&amp;Site={$CFG[webname]}&amp;Menu=yes" target="_blank"><img style="display:inline" src="http://wpa.qq.com/pa?p=1:{$qq}:4" height="16" border="0" alt="QQ" />{$qq}</a>
+	&lt;!&ndash;{/loop}&ndash;&gt;
+	&lt;!&ndash;{/if}&ndash;&gt;<br />
+	{$CFG['copyright']}&nbsp;&nbsp; ICP备案号：<a href=http://www.miibeian.gov.cn target=_blank>{$CFG[icp]}</a>&nbsp;&nbsp; &lt;!&ndash;{if $CFG['count']}&ndash;&gt;
+	{$CFG[count]}
+	&lt;!&ndash;{/if}&ndash;&gt;</div>
+  <div class="clear"></div>
+  <div class="bor"></div>
+</div>
+&lt;!&ndash; 页脚 结束 &ndash;&gt;-->

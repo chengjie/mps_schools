@@ -1,0 +1,52 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="/">一屌丝</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <!--{loop $nav $nav}--><li><a href="{$nav[url]}" target="{$nav[target]}">{$nav[navname]}</a></li><!--{/loop}-->
+                </ul>
+            </div>
+            <a class="btn pull-right btn-primary" href="{$CFG[postfile]}"><strong>发布消息</strong></a>
+            <!--{if $_userid}-->
+            <span class="brand brand-right">{$_username}</span>
+            <a class="brand brand-right" href="member.php?act=logout&mid={$_userid}">[退出]</a>
+            <!--{if $_status<=0}-->
+            <a class="brand brand-right" href="member.php?act=send_check_email"><font color='red'>[验证邮件]</font></a>
+            <!--{/if}-->
+            <a class="brand brand-right" href="member.php">[个人中心]</a>
+            <!--{else}-->
+            <a class="brand brand-right" href="member.php?act=register">[注册]</a>
+            <a class="brand brand-right" href="member.php?act=login&refer={$PHP_URL}">[登录]</a>
+            <!--{/if}-->
+
+        </div>
+    </div>
+</div>
+<div class="jumbotron subhead">
+    <div class="container">
+        <div class="span2">
+            <h1>一屌丝</h1>
+        </div>
+        <div class="span6 pull-right">
+            <div class="input-append" style="margin-top: 20px;">
+                <form  style="margin-bottom: 0" name="form" action="search.php" method="post">
+                    <input class="span5" id="appendedInputButtons" type="text" placeholder="请输入要搜索的关键词">
+                    <input type="submit" class="btn" name="search"  value="搜 索">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="span6 pull-right">
+            {if $CFG['annouce']}
+            <i class="icon-volume-up"></i><small>公告：{$CFG['annouce']}</small>
+            {/if}
+        </div>
+    </div>
+</div>

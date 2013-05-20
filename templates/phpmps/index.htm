@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
+    <title>{$seo['title']}</title>
+    <meta name="Keywords" content="{$seo['keywords']}">
+    <meta name="Description" content="{$seo['description']}">
+    <link href="templates/{$CFG[tplname]}/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="templates/{$CFG[tplname]}/bootstrap/css/bootstrap-responsive.css" type="text/css" rel="stylesheet" />
+    <link href="templates/{$CFG[tplname]}/bootstrap/css/docs.css" type="text/css" rel="stylesheet" />
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+<!--{template header}-->
+<div class="container" style="padding-top:5px;">
+    <div class="row">
+        <div id="category" class="span3">
+            <div class="well">
+            {loop $cats_list $cat}
+            <a class="label label-info" href="{$cat['caturl']}">{$cat['catname']}</a>
+            <ul class="inline">
+                {loop $cat[children] $child}
+                <li><a href="{$child['url']}" data-toggle="tooltip" data-placement="top" title="{$child['description']}" data-original-title="{$child['description']}">{$child['name']}</a></li>
+                {/loop}
+            </ul>
+            {/loop}
+            </div>
+        </div>
+        <div class="span6">
+            <div id="myCarousel" class="carousel slide">
+                <ol class="carousel-indicators">
+                    {loop $flash $key $f}
+                    <li data-target="#myCarousel" data-slide-to="{$key}" class="{if $key==0}active{/if}"></li>
+                    {/loop}
+                </ol>
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    {loop $flash $key $flash}
+                    <div class="{if $key==0}active{/if} item">
+                        <img src="{$flash['image']}"/>
+                        <div class="carousel-caption">
+                            {$flash['description']}
+                        </div>
+                    </div>
+                    {/loop}
+                </div>
+                <!-- Carousel nav -->
+                <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            </div>
+            <div class="">
+                <ul class="unstyled">
+                    {loop $comments $comment}
+                    <li><b>{$comment[username]}</b>&nbsp;对&nbsp;<a href="{$comment[url]}" target="_blank" class="pinglbt2">{$comment[title]}</a>&nbsp;的评论</li>
+                    {/loop}
+                </ul>
+            </div>
+        </div>
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">屌丝快报<span class="pull-right"><a href="article.php">更多</a> </span> </li>
+                    {loop $articles $val}
+                    <li><a href="{$val[url]}" target="_blank" title="{$val[title]}">{$val[ctitle]}</a></li>
+                    {/loop}
+                </ul>
+            </div>
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">热门推荐<span class="pull-right"><a href="article.php">更多</a> </span> </li>
+                    {loop $pro_info $val}
+                    <li><a href="{$val['url']}"  target=_blank>{$val['title']}</a><span>{$val['catname']}</span> -<span>{$val['areaname']}</span></li>
+                {/loop}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="span9">
+            <div class="tabbable">
+                <ul class="nav nav-tabs" id="myTab">
+                    <li class="active">
+                        <a href="#tab1" data-toggle="tab">二手教材</a>
+                    </li>
+                    <li>
+                        <a href="#tab2" data-toggle="tab">手机</a>
+                    </li>
+                    <li>
+                        <a href="#tab3" data-toggle="tab">电脑</a>
+                    </li>
+                    <li>
+                        <a href="#tab4" data-toggle="tab">数码相机</a>
+                    </li>
+                    <li>
+                        <a href="#tab5" data-toggle="tab">闲置服装</a>
+                    </li>
+                    <li>
+                        <a href="#tab6" data-toggle="tab">数码</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <ul class="thumbnails">
+                            {loop $thumb_info $thumb}
+                            {if $thumb[catid]==3}
+                            <li class="span2">
+                                <a class="thumbnail" href="{$thumb[url]}" title="{$thumb[title]}" target=_blank>
+                                    <img data-src="{$thumb[thumb]}/300x200" src="{$thumb[thumb]}" alt="{$thumb[title]}" />
+                                    <span class="title">{$thumb[title]}</span>
+                                </a>
+                            </li>
+                            {/if}
+                            {/loop}
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                        <ul class="thumbnails">
+                            {loop $thumb_info $thumb}
+                            {if $thumb[catid]==6}
+                            <li class="span2">
+                                <a class="thumbnail" href="{$thumb[url]}" title="{$thumb[title]}" target=_blank>
+                                    <img data-src="{$thumb[thumb]}/300x200" src="{$thumb[thumb]}" alt="{$thumb[title]}" />
+                                    <span class="title">{$thumb[title]}</span>
+                                </a>
+                            </li>
+                            {/if}
+                            {/loop}
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="tab3">
+                        <ul class="thumbnails">
+                            {loop $thumb_info $thumb}
+                            {if $thumb[catid]==8}
+                            <li class="span2">
+                                <a class="thumbnail" href="{$thumb[url]}" title="{$thumb[title]}" target=_blank>
+                                    <img data-src="{$thumb[thumb]}/300x200" src="{$thumb[thumb]}" alt="{$thumb[title]}" />
+                                    <span class="title">{$thumb[title]}</span>
+                                </a>
+                            </li>
+                            {/if}
+                            {/loop}
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="tab4">
+                        <ul class="thumbnails">
+                            {loop $thumb_info $thumb}
+                            {if $thumb[catid]==7}
+                            <li class="span2">
+                                <a class="thumbnail" href="{$thumb[url]}" title="{$thumb[title]}" target=_blank>
+                                    <img data-src="{$thumb[thumb]}/300x200" src="{$thumb[thumb]}" alt="{$thumb[title]}" />
+                                    <span class="title">{$thumb[title]}</span>
+                                </a>
+                            </li>
+                            {/if}
+                            {/loop}
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="tab5">
+                        <ul class="thumbnails">
+                            {loop $thumb_info $thumb}
+                            {if $thumb[catid]==14}
+                            <li class="span2">
+                                <a class="thumbnail" href="{$thumb[url]}" title="{$thumb[title]}" target=_blank>
+                                    <img data-src="{$thumb[thumb]}/300x200" src="{$thumb[thumb]}" alt="{$thumb[title]}" />
+                                    <span class="title">{$thumb[title]}</span>
+                                </a>
+                            </li>
+                            {/if}
+                            {/loop}
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="tab6">
+                        <ul class="thumbnails">
+                            {loop $thumb_info $thumb}
+                            {if $thumb[catid]==11}
+                            <li class="span2">
+                                <a class="thumbnail" href="{$thumb[url]}" title="{$thumb[title]}" target=_blank>
+                                    <img data-src="{$thumb[thumb]}/300x200" src="{$thumb[thumb]}" alt="{$thumb[title]}" />
+                                    <span class="title">{$thumb[title]}</span>
+                                </a>
+                            </li>
+                            {/if}
+                            {/loop}
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">最新信息</li>
+                    {loop $new_info $val}
+                    <li><a href="{$val['url']}" data-toggle="tooltip" data-placement="top" data-original-title="" target=_blank>{$val['title']}</a><span>{$val['catname']}</span></li>
+                    {/loop}
+                </ul>
+            </div>
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">热门信息</li>
+                    {loop $hot_info $val}
+                    <li><a href="{$val['url']}" data-toggle="tooltip" data-placement="top" data-original-title="" target=_blank>{$val['title']}</a><span>{$val['catname']}</span></li>
+                    {/loop}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--{template footer}-->
+<script src="templates/{$CFG[tplname]}/bootstrap/js/jquery.js"></script>
+<script src="templates/{$CFG[tplname]}/bootstrap/js/bootstrap.js"></script>
+<script src="templates/{$CFG[tplname]}/bootstrap/js/jquery.scrollUp.min.js"></script>
+<script>
+    $('body').tooltip({ selector: "#category a" });
+    $('.carousel').carousel({
+        interval: 5000
+    });
+    $('#myTab a').mouseHooks(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+    $(document).ready(function(){
+        $("img.lazy").unveil();
+        $("#start-intro").click(function(){
+            bootstro.start();
+        });
+        $.scrollUp({
+            scrollName: 'scrollUp', // Element ID
+            topDistance: '300', // Distance from top before showing element (px)
+            topSpeed: 300, // Speed back to top (ms)
+            animation: 'fade', // Fade, slide, none
+            animationInSpeed: 200, // Animation in speed (ms)
+            animationOutSpeed: 200, // Animation out speed (ms)
+            scrollText: '', // Text for element
+            activeOverlay: false  // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+        });
+    });
+
+</script>
+<a id="scrollUp" href="#top" title="" style="position: fixed; z-index: 2147483647; display: block;"></a>
+</body>
+</html>
